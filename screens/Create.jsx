@@ -14,6 +14,7 @@ const Create = ({ navigation, route }) => {
       return item.selected;
     }),
   );
+  const [searchKey, setSearchKey] = useState('');
 
   const toNextPage = () => {
     navigation.navigate('Details');
@@ -51,9 +52,11 @@ const Create = ({ navigation, route }) => {
               placeholder="Search"
               placeholderTextColor={colors.gray}
               selectionColor={colors.orange}
+              value={searchKey}
+              onChangeText={(text) => setSearchKey(text)}
             />
             <View style={create.close}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => setSearchKey('')}>
                 <AntDesign style={create.searchbarCloseText} name="closecircle" />
               </TouchableOpacity>
             </View>
@@ -85,32 +88,35 @@ const Create = ({ navigation, route }) => {
         <ScrollView>
           {contactsData.map((item, index) => {
             const { picture, name, phone, selected } = item;
-            return (
-              <View key={index}>
-                <View style={create.contactItem}>
-                  <View style={[create.imgContainer, { borderColor: 'red' }]}>
-                    <Image style={create.face} source={{ uri: picture.medium }} />
-                  </View>
-                  <View style={create.contactDetails}>
-                    <View>
-                      <Text style={create.contactHead}>{`${name.first} ${name.last}`}</Text>
-                      <Text style={create.contactSub}>{phone}</Text>
+            const fullname = `${name.first} ${name.last}`;
+            if (fullname.includes(searchKey)) {
+              return (
+                <View key={index}>
+                  <View style={create.contactItem}>
+                    <View style={[create.imgContainer, { borderColor: 'red' }]}>
+                      <Image style={create.face} source={{ uri: picture.medium }} />
                     </View>
-                    <TouchableOpacity onPress={() => toggleSelected(index, item)} key={index}>
-                      {selected && <Ionicons style={create.contactCheck} name="ios-checkmark-circle" size={35} />}
-                      {(!selected || selected === undefined) && (
-                        <MaterialCommunityIcons
-                          style={create.contactUnCheck}
-                          name="checkbox-blank-circle-outline"
-                          size={35}
-                        />
-                      )}
-                    </TouchableOpacity>
+                    <View style={create.contactDetails}>
+                      <View>
+                        <Text style={create.contactHead}>{fullname}</Text>
+                        <Text style={create.contactSub}>{phone}</Text>
+                      </View>
+                      <TouchableOpacity onPress={() => toggleSelected(index, item)} key={index}>
+                        {selected && <Ionicons style={create.contactCheck} name="ios-checkmark-circle" size={35} />}
+                        {(!selected || selected === undefined) && (
+                          <MaterialCommunityIcons
+                            style={create.contactUnCheck}
+                            name="checkbox-blank-circle-outline"
+                            size={35}
+                          />
+                        )}
+                      </TouchableOpacity>
+                    </View>
                   </View>
+                  <View style={create.thinLine} />
                 </View>
-                <View style={create.thinLine} />
-              </View>
-            );
+              );
+            }
           })}
         </ScrollView>
 
