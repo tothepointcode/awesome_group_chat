@@ -244,6 +244,7 @@ export const details = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     textAlign: 'center',
+    color: colors.white
   },
   bottomHead: {
     fontSize: 25,

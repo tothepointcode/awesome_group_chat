@@ -13,7 +13,7 @@ const Details = ({ navigation }) => {
 
   return (
     <View>
-      <ImageBackground style={create.imagebg} source={require('./../assets/croods.png')}>
+      <ImageBackground style={create.imagebg} source={require('./../assets/croods1.png')}>
         <View style={create.topSection}>
           <View style={details.head}>
             <View style={details.profileRing}>
@@ -25,7 +25,7 @@ const Details = ({ navigation }) => {
               </View>
             </View>
             <View style={details.headDetails}>
-              <Text style={create.contactHead}>Group Name</Text>
+              <Text style={[create.contactHead, {color: colors.white}]}>Group Name</Text>
               <Text style={details.subhead}>Provide a group subject and an optional group icon</Text>
             </View>
           </View>

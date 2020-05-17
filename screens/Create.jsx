@@ -14,7 +14,7 @@ const Create = ({ navigation}) => {
 
   return (
     <View>
-      <ImageBackground style={create.imagebg} source={require('./../assets/croods.png')}>
+      <ImageBackground style={create.imagebg} source={require('./../assets/croods2.png')}>
         <View style={create.topSection}>
           <View style={create.searchView}>
             <TextInput
