@@ -172,6 +172,12 @@ export const create = StyleSheet.create({
     fontSize: 35,
     color: colors.orange,
   },
+  contactUnCheck: {
+    fontSize: 35,
+    color: colors.dark,
+    paddingRight: 0,
+    marginRight: -3
+  },
   thinLine: {
     backgroundColor: colors.gray,
     height: 1,

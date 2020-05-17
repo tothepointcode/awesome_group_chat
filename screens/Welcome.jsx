@@ -17,7 +17,7 @@ const Welcome = ({ navigation }) => {
 
   useEffect(() => {
     axios
-      .get('https://randomuser.me/api/?page=3&results=15&seed=abc&inc=name,phone,picture')
+      .get('https://randomuser.me/api/?page=3&results=15&seed=abcd&inc=name,phone,picture')
       .then((res) => {
         setData(res.data.results);
       })

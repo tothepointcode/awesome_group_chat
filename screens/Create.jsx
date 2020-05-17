@@ -1,16 +1,28 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
 // UI
 import { View, Text, ImageBackground, ScrollView, Image, TextInput } from 'react-native';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { create, colors } from './../style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Create = ({ navigation}) => {
+const Create = ({ navigation, route }) => {
+  const { data } = route.params;
+  const [contactsData, setContactsData] = useState(data);
 
   const toNextPage = () => {
-    navigation.navigate("Details")
-  }
+    navigation.navigate('Details');
+  };
+
+  const toggleSelected = (index) => {
+    const { selected } = data[index];
+    if (selected) {
+      data[index].selected = false;
+    } else {
+      data[index].selected = true;
+    }
+    setContactsData([...data]);
+  };
 
   return (
     <View>
@@ -24,7 +36,7 @@ const Create = ({ navigation}) => {
               selectionColor={colors.orange}
             />
             <View style={create.close}>
-              <TouchableOpacity >
+              <TouchableOpacity>
                 <AntDesign style={create.searchbarCloseText} name="closecircle" />
               </TouchableOpacity>
             </View>
@@ -48,22 +60,35 @@ const Create = ({ navigation}) => {
       </ImageBackground>
       <View style={create.bottomSection}>
         <ScrollView>
-          <TouchableOpacity>
-            <View style={create.contactItem}>
-              <View style={[create.imgContainer, { borderColor: 'red' }]}>
-                <Image style={create.face} source={require('./../assets/croodsCrop.png')} />
-              </View>
-              <View style={create.contactDetails}>
-                <View>
-                  <Text style={create.contactHead}>Name</Text>
-                  <Text style={create.contactSub}>Contact</Text>
+          {contactsData.map((item, index) => {
+            const { picture, name, phone, selected } = item;
+            return (
+              <View key={index}>
+                <View style={create.contactItem}>
+                  <View style={[create.imgContainer, { borderColor: 'red' }]}>
+                    <Image style={create.face} source={{ uri: picture.medium }} />
+                  </View>
+                  <View style={create.contactDetails}>
+                    <View>
+                      <Text style={create.contactHead}>{`${name.first} ${name.last}`}</Text>
+                      <Text style={create.contactSub}>{phone}</Text>
+                    </View>
+                    <TouchableOpacity onPress={() => toggleSelected(index)} key={index}>
+                      {selected && <Ionicons style={create.contactCheck} name="ios-checkmark-circle" size={35} />}
+                      {(!selected || selected === undefined) && (
+                        <MaterialCommunityIcons
+                          style={create.contactUnCheck}
+                          name="checkbox-blank-circle-outline"
+                          size={35}
+                        />
+                      )}
+                    </TouchableOpacity>
+                  </View>
                 </View>
-                <Ionicons style={create.contactCheck} name="ios-checkmark-circle" size={24} color="black" />
-                {/* <MaterialIcons name="radio-button-unchecked" size={24} color="black" /> */}
+                <View style={create.thinLine} />
               </View>
-            </View>
-            <View style={create.thinLine} />
-          </TouchableOpacity>
+            );
+          })}
         </ScrollView>
 
         <View style={create.next}>
