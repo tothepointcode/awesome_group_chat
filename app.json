@@ -1,17 +1,11 @@
 {
-  "name": "groupChatUI",
-  "displayName": "groupChatUI",
+  "name": "Awesome Group Chat",
+  "displayName": "Awesome Group Chat",
   "expo": {
-    "name": "groupChatUI",
-    "slug": "groupChatUI",
+    "name": "awesomeGroupChat",
+    "slug": "awesomeGroupChat",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "platforms": ["ios", "android", "web"],
+    "assetBundlePatterns": ["**/*"]
   }
 }
