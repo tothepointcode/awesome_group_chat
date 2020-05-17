@@ -9,19 +9,32 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const Create = ({ navigation, route }) => {
   const { data } = route.params;
   const [contactsData, setContactsData] = useState(data);
+  const [selectedData, setSelectedData] = useState([]);
 
   const toNextPage = () => {
     navigation.navigate('Details');
   };
 
-  const toggleSelected = (index) => {
+  const toggleSelected = (index, item) => {
+    if (index == -1) {
+      index = data.indexOf(item);
+    }
+
     const { selected } = data[index];
+    let newSelected = [];
+
     if (selected) {
       data[index].selected = false;
+
+      const id = selectedData.indexOf(item);
+      selectedData.splice(id, 1);
+      newSelected = [...selectedData];
     } else {
       data[index].selected = true;
+      newSelected = [...selectedData, data[index]];
     }
     setContactsData([...data]);
+    setSelectedData(newSelected);
   };
 
   return (
@@ -43,24 +56,30 @@ const Create = ({ navigation, route }) => {
           </View>
           <View style={create.selectedView}>
             <ScrollView horizontal={true}>
-              <View>
-                <View style={[create.imgContainer, {}]}>
-                  <Image style={create.face} source={require('./../assets/croodsCrop.png')} />
-                  <View style={create.faceClosebtn}>
-                    <TouchableOpacity style={{ padding: 3 }}>
-                      <AntDesign style={create.closeIcon} name="closecircle" />
-                    </TouchableOpacity>
+              {selectedData.map((item, index) => {
+                const { picture, name } = item;
+
+                return (
+                  <View key={index} style={{ marginRight: 15 }}>
+                    <View style={create.imgContainer}>
+                      <Image style={create.face} source={{ uri: picture.medium }} />
+                      <View style={create.faceClosebtn}>
+                        <TouchableOpacity onPress={() => toggleSelected(-1, item)} style={{ padding: 3 }}>
+                          <AntDesign style={create.closeIcon} name="closecircle" />
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                    <Text style={create.faceName}>{name.first}</Text>
                   </View>
-                </View>
-                <Text style={create.faceName}>Name</Text>
-              </View>
+                );
+              })}
             </ScrollView>
           </View>
         </View>
       </ImageBackground>
       <View style={create.bottomSection}>
         <ScrollView>
-          {contactsData.map((item, index) => {
+          {data.map((item, index) => {
             const { picture, name, phone, selected } = item;
             return (
               <View key={index}>
@@ -73,7 +92,7 @@ const Create = ({ navigation, route }) => {
                       <Text style={create.contactHead}>{`${name.first} ${name.last}`}</Text>
                       <Text style={create.contactSub}>{phone}</Text>
                     </View>
-                    <TouchableOpacity onPress={() => toggleSelected(index)} key={index}>
+                    <TouchableOpacity onPress={() => toggleSelected(index, item)} key={index}>
                       {selected && <Ionicons style={create.contactCheck} name="ios-checkmark-circle" size={35} />}
                       {(!selected || selected === undefined) && (
                         <MaterialCommunityIcons
