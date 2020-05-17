@@ -1,0 +1,17 @@
+{
+  "name": "groupChatUI",
+  "displayName": "groupChatUI",
+  "expo": {
+    "name": "groupChatUI",
+    "slug": "groupChatUI",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
