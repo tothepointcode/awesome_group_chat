@@ -8,10 +8,44 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Details = ({ navigation, route }) => {
   const { selectedData } = route.params;
+  console.log(route.params);
 
   const toNextPage = () => {
     navigation.navigate('Acknowledgement');
   };
+
+  const [selectedContacts, setSelectedContacts] = React.useState(selectedData);
+
+  const toggleSelected = (index, item) => {
+    // if (index == -1) {
+    //   index = data.indexOf(item);
+    // }
+
+    // const { selected } = data[index];
+    let newSelected = [];
+
+    // if (selected) {
+    //   data[index].selected = false;
+
+    // const id = selectedData.indexOf(item);
+    // selectedData.splice(index, 1);
+    newSelected = [...selectedContacts];
+
+    newSelected.splice(index, 1);
+
+
+    // } else {
+    //   data[index].selected = true;
+    //   newSelected = [data[index], ...selectedData];
+    // }
+    // setContactsData([...data]);
+    setSelectedContacts(newSelected);
+  };
+
+  React.useEffect(() => {
+    setSelectedContacts(selectedData);
+    console.log(selectedData);
+  }, [selectedData]);
 
   return (
     <View>
@@ -36,19 +70,19 @@ const Details = ({ navigation, route }) => {
       <View style={[create.bottomSection, { padding: 0, paddingTop: 35 }]}>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', paddingLeft: 35 }}>
           <Text style={details.bottomHead}>Participants </Text>
-          <Text style={details.memberCount}>{selectedData.length}</Text>
+          <Text style={details.memberCount}>{selectedContacts.length}</Text>
         </View>
         <ScrollView>
           <View style={details.selectedView}>
-            {selectedData.map((item, index) => {
+            {selectedContacts.map((item, index) => {
               const { picture, name } = item;
 
               return (
                 <View style={{ margin: 8 }} key={index}>
                   <View style={[create.imgContainer, details.imgContainer]}>
-                  <Image style={create.face} source={{ uri: picture.medium }} />
+                    <Image style={create.face} source={{ uri: picture.medium }} />
                     <View style={[create.faceClosebtn, details.closebtn]}>
-                      <TouchableOpacity style={{ padding: 3 }}>
+                      <TouchableOpacity onPress={() => toggleSelected(index, item)} style={{ padding: 3 }}>
                         <AntDesign style={[create.closeIcon, details.closeIcon]} name="closecircle" />
                       </TouchableOpacity>
                     </View>
