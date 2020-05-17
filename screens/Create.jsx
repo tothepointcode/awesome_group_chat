@@ -36,7 +36,7 @@ const Create = ({ navigation, route }) => {
       newSelected = [...selectedData];
     } else {
       data[index].selected = true;
-      newSelected = [...selectedData, data[index]];
+      newSelected = [data[index], ...selectedData];
     }
     setContactsData([...data]);
     setSelectedData(newSelected);

@@ -176,7 +176,7 @@ export const create = StyleSheet.create({
     fontSize: 35,
     color: colors.dark,
     paddingRight: 0,
-    marginRight: -3
+    marginRight: -3,
   },
   thinLine: {
     backgroundColor: colors.gray,
@@ -250,7 +250,7 @@ export const details = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     textAlign: 'center',
-    color: colors.white
+    color: colors.white,
   },
   bottomHead: {
     fontSize: 25,
@@ -272,13 +272,13 @@ export const details = StyleSheet.create({
     padding: 5,
   },
   imgContainer: {
-      borderColor: colors.dark
+    borderColor: colors.dark,
   },
   closebtn: {
-      backgroundColor: colors.white
+    backgroundColor: colors.white,
   },
   closeIcon: {
-      color: colors.orange,
-      backgroundColor: null
-  }
+    color: colors.orange,
+    backgroundColor: null,
+  },
 });
