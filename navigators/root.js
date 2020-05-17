@@ -10,6 +10,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 //Screens
 import Welcome from './../screens/Welcome';
 import Create from './../screens/Create';
+import Details from './../screens/Details';
+
 
 import { colors } from './../style';
 
@@ -41,6 +43,14 @@ const Root = () => {
           }}
           name="Create"
           component={Create}
+        />
+        <Stack.Screen
+          options={{
+            title: 'New Group',
+            headerTransparent: true
+          }}
+          name="Details"
+          component={Details}
         />
       </Stack.Navigator>
     </NavigationContainer>

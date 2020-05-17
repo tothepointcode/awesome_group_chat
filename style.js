@@ -139,11 +139,11 @@ export const create = StyleSheet.create({
     borderRadius: 50,
   },
   bottomSection: {
-    height: windowHeight * 0.68,
+    height: windowHeight * 0.67,
     width: windowWidth,
     position: 'absolute',
     backgroundColor: colors.white,
-    top: windowHeight * 0.36,
+    top: windowHeight * 0.37,
     borderTopLeftRadius: 35,
     borderTopRightRadius: 35,
     padding: 35,
@@ -186,6 +186,63 @@ export const create = StyleSheet.create({
     backgroundColor: colors.orange,
     padding: 15,
     borderRadius: 50,
-    elevation: 5
+    elevation: 5,
   },
+});
+
+export const details = StyleSheet.create({
+  head: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  profile: {
+    backgroundColor: colors.dark,
+    color: colors.white,
+    width: 100,
+    height: 100,
+    textAlign: 'center',
+    padding: 35,
+    borderRadius: 50,
+    fontSize: 30,
+  },
+  profileRing: {
+    borderWidth: 2,
+    borderColor: colors.dark,
+    borderRadius: 100,
+    height: 110,
+    width: 110,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  edit: {
+    backgroundColor: 'rgba(255,255,255, 0.8)',
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    padding: 2,
+    borderRadius: 50
+  },
+  editTouchable: {
+    backgroundColor: colors.dark,
+    borderRadius: 50,
+    width: 35,
+    height: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  editIcon: {
+    color: colors.white,
+    padding: 5,
+    fontSize: 28,
+  },
+  headDetails: {
+      padding: 10,
+      alignItems: 'center'
+  },
+  subhead: {
+      fontSize: 15,
+      fontWeight: '600',
+      textAlign: 'center'
+  }
 });

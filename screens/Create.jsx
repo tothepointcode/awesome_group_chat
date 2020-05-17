@@ -2,14 +2,14 @@ import * as React from 'react';
 
 // UI
 import { View, Text, ImageBackground, ScrollView, Image, TextInput } from 'react-native';
-import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { create, colors } from './../style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Create = ({ navigation}) => {
 
   const toNextPage = () => {
-
+    navigation.navigate("Details")
   }
 
   return (
