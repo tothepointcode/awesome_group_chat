@@ -76,26 +76,27 @@ export const create = StyleSheet.create({
     width: windowWidth,
     height: windowHeight * 0.6,
   },
-  namebar: {
+  searchView: {
+    position: 'relative',
+  },
+  searchbar: {
     backgroundColor: colors.dark,
+    padding: 15,
     borderRadius: 35,
-    flexDirection: 'row',
-    padding: 5,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  namebarText: {
     color: colors.white,
-    padding: 10,
-    fontSize: 17,
+    fontSize: 16,
     letterSpacing: 1,
+    position: 'relative',
+    paddingRight: 48,
   },
-  namebarClosebtn: {
-    padding: 8,
-  },
-  namebarCloseText: {
+  searchbarCloseText: {
     color: colors.white,
     fontSize: 24,
+  },
+  close: {
+    position: 'absolute',
+    right: 15,
+    top: 16,
   },
   selectedView: {
     marginTop: 30,
@@ -107,7 +108,7 @@ export const create = StyleSheet.create({
     borderColor: colors.white,
     borderWidth: 2,
     position: 'relative',
-    width: 74
+    width: 74,
   },
   face: {
     width: 60,
@@ -129,7 +130,7 @@ export const create = StyleSheet.create({
     color: colors.white,
     textAlign: 'center',
     fontSize: 13,
-    padding: 3
+    padding: 3,
   },
   closeIcon: {
     fontSize: 17,
@@ -138,44 +139,53 @@ export const create = StyleSheet.create({
     borderRadius: 50,
   },
   bottomSection: {
-      height: windowHeight * 0.75,
-      width: windowWidth,
-      position: 'absolute',
-      backgroundColor: colors.white,
-      top: windowHeight * 0.36,
-      borderTopLeftRadius: 35,
-      borderTopRightRadius: 35,
-      padding: 35   
+    height: windowHeight * 0.68,
+    width: windowWidth,
+    position: 'absolute',
+    backgroundColor: colors.white,
+    top: windowHeight * 0.36,
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
+    padding: 35,
   },
   contactItem: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   contactDetails: {
-      flexDirection: 'row',
-      width: '70%',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+    flexDirection: 'row',
+    width: '70%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   contactHead: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: colors.dark
+    color: colors.dark,
   },
   contactSub: {
     fontSize: 16,
-    color: colors.gray
+    color: colors.gray,
   },
   contactCheck: {
     fontSize: 35,
-    color: colors.orange
+    color: colors.orange,
   },
   thinLine: {
     backgroundColor: colors.gray,
     height: 1,
     width: '70%',
     alignSelf: 'flex-end',
-    marginVertical: 15
-  }
+    marginVertical: 15,
+  },
+  next: {
+    position: 'absolute',
+    bottom: 10,
+    right: 30,
+    backgroundColor: colors.orange,
+    padding: 15,
+    borderRadius: 50,
+    elevation: 5
+  },
 });
