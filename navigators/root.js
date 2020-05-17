@@ -11,18 +11,37 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from './../screens/Welcome';
 import Create from './../screens/Create';
 
+import { colors } from './../style';
 
 const Stack = createStackNavigator();
 
 const Root = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen options={{
-            headerShown: false
-        }} name="Welcome" component={Welcome} />
-        <Stack.Screen options={{
-        }} name="Create" component={Create} />
+      <Stack.Navigator
+        screenOptions={{
+          headerTitleAlign: 'center',
+          headerTintColor: colors.white,
+          headerLeftContainerStyle: {
+              paddingLeft: 16
+          }
+        }}
+      >
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="Welcome"
+          component={Welcome}
+        />
+        <Stack.Screen
+          options={{
+            title: 'New Group',
+            headerTransparent: true
+          }}
+          name="Create"
+          component={Create}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
