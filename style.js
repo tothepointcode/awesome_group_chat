@@ -11,6 +11,7 @@ export const colors = {
   white: '#ffffff',
   color2: '#f3a34b',
   color3: '#07b9cf',
+  gray: '#9e8f8d',
   darktrans: 'rgba(24, 23, 22, 0.8)',
   lighttrans: 'rgba(24, 23, 22, 0.3)',
 };
@@ -68,8 +69,8 @@ export const create = StyleSheet.create({
     height: windowHeight * 0.5,
     width: windowWidth,
     padding: 35,
-    paddingTop: 120,
-    backgroundColor: colors.lighttrans
+    paddingTop: 110,
+    backgroundColor: colors.lighttrans,
   },
   imagebg: {
     width: windowWidth,
@@ -79,7 +80,7 @@ export const create = StyleSheet.create({
     backgroundColor: colors.dark,
     borderRadius: 35,
     flexDirection: 'row',
-    padding: 10,
+    padding: 5,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -98,33 +99,37 @@ export const create = StyleSheet.create({
   },
   selectedView: {
     marginTop: 30,
-    paddingVertical: 15,
+    paddingVertical: 5,
   },
   imgContainer: {
     padding: 5,
     borderRadius: 50,
     borderColor: colors.white,
     borderWidth: 2,
-    position: 'relative'
+    position: 'relative',
+    width: 74
   },
   face: {
     width: 60,
     height: 60,
     borderRadius: 50,
   },
-  
   faceClosebtn: {
-    // position: 'absolute',
-    // right: 0,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.lighttrans,
-    width: 22,
-    height: 22,
+    width: 24,
+    height: 24,
     borderRadius: 50,
     position: 'absolute',
     top: 0,
-    right: 0
+    right: 0,
+  },
+  faceName: {
+    color: colors.white,
+    textAlign: 'center',
+    fontSize: 13,
+    padding: 3
   },
   closeIcon: {
     fontSize: 17,
@@ -132,4 +137,45 @@ export const create = StyleSheet.create({
     backgroundColor: colors.dark,
     borderRadius: 50,
   },
+  bottomSection: {
+      height: windowHeight * 0.75,
+      width: windowWidth,
+      position: 'absolute',
+      backgroundColor: colors.white,
+      top: windowHeight * 0.36,
+      borderTopLeftRadius: 35,
+      borderTopRightRadius: 35,
+      padding: 35   
+  },
+  contactItem: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+  },
+  contactDetails: {
+      flexDirection: 'row',
+      width: '70%',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+  },
+  contactHead: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: colors.dark
+  },
+  contactSub: {
+    fontSize: 16,
+    color: colors.gray
+  },
+  contactCheck: {
+    fontSize: 35,
+    color: colors.orange
+  },
+  thinLine: {
+    backgroundColor: colors.gray,
+    height: 1,
+    width: '70%',
+    alignSelf: 'flex-end',
+    marginVertical: 15
+  }
 });
