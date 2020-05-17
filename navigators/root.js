@@ -11,6 +11,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from './../screens/Welcome';
 import Create from './../screens/Create';
 import Details from './../screens/Details';
+import Acknowledgement from './../screens/Acknowledgement';
 
 
 import { colors } from './../style';
@@ -51,6 +52,13 @@ const Root = () => {
           }}
           name="Details"
           component={Details}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="Acknowledgement"
+          component={Acknowledgement}
         />
       </Stack.Navigator>
     </NavigationContainer>

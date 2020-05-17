@@ -8,7 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Details = ({ navigation }) => {
   const toNextPage = () => {
-    navigation.navigate('');
+    navigation.navigate('Acknowledgement');
   };
 
   return (
