@@ -29,30 +29,30 @@ const Details = ({ navigation }) => {
               <Text style={details.subhead}>Provide a group subject and an optional group icon</Text>
             </View>
           </View>
-
-
-          
         </View>
       </ImageBackground>
       <View style={create.bottomSection}>
+        <View style={{flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center'}}>
+          <Text style={details.bottomHead}>Participants </Text>
+          <Text style={details.memberCount}>10</Text>
+        </View>
         <ScrollView>
-
-        <View style={create.selectedView}>
+          <View style={create.selectedView}>
             <ScrollView horizontal={true}>
               <View>
-                <View style={[create.imgContainer, {}]}>
+                <View style={[create.imgContainer, details.imgContainer]}>
                   <Image style={create.face} source={require('./../assets/croodsCrop.png')} />
-                  <View style={create.faceClosebtn}>
+                  <View style={[create.faceClosebtn, details.closebtn]}>
                     <TouchableOpacity style={{ padding: 3 }}>
-                      <AntDesign style={create.closeIcon} name="closecircle" />
+                      <AntDesign style={[create.closeIcon, details.closeIcon]} name="closecircle" />
                     </TouchableOpacity>
                   </View>
                 </View>
-                <Text style={create.faceName}>Name</Text>
+                <Text style={details.faceName}>Name</Text>
               </View>
             </ScrollView>
           </View>
-          <TouchableOpacity>
+          {/* <TouchableOpacity>
             <View style={create.contactItem}>
               <View style={[create.imgContainer, { borderColor: 'red' }]}>
                 <Image style={create.face} source={require('./../assets/croodsCrop.png')} />
@@ -64,10 +64,10 @@ const Details = ({ navigation }) => {
                 </View>
                 <Ionicons style={create.contactCheck} name="ios-checkmark-circle" size={24} color="black" />
                 {/* <MaterialIcons name="radio-button-unchecked" size={24} color="black" /> */}
-              </View>
+              {/* </View>
             </View>
             <View style={create.thinLine} />
-          </TouchableOpacity>
+          </TouchableOpacity> */} 
         </ScrollView>
 
         <View style={create.next}>

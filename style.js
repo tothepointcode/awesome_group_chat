@@ -221,7 +221,7 @@ export const details = StyleSheet.create({
     right: 0,
     bottom: 0,
     padding: 2,
-    borderRadius: 50
+    borderRadius: 50,
   },
   editTouchable: {
     backgroundColor: colors.dark,
@@ -237,12 +237,41 @@ export const details = StyleSheet.create({
     fontSize: 28,
   },
   headDetails: {
-      padding: 10,
-      alignItems: 'center'
+    padding: 10,
+    alignItems: 'center',
   },
   subhead: {
-      fontSize: 15,
-      fontWeight: '600',
-      textAlign: 'center'
+    fontSize: 15,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  bottomHead: {
+    fontSize: 25,
+  },
+  memberCount: {
+    color: colors.white,
+    backgroundColor: colors.color2,
+    padding: 3,
+    borderRadius: 50,
+    fontWeight: 'bold',
+    fontSize: 19,
+    marginLeft: 10,
+  },
+  faceName: {
+    color: colors.dark,
+    textAlign: 'center',
+    fontSize: 13,
+    fontWeight: 'bold',
+    padding: 5,
+  },
+  imgContainer: {
+      borderColor: colors.dark
+  },
+  closebtn: {
+      backgroundColor: colors.white
+  },
+  closeIcon: {
+      color: colors.orange,
+      backgroundColor: null
   }
 });
