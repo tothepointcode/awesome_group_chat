@@ -263,6 +263,8 @@ export const details = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 19,
     marginLeft: 10,
+    minWidth: 30,
+    textAlign: 'center'
   },
   faceName: {
     color: colors.dark,
@@ -280,5 +282,13 @@ export const details = StyleSheet.create({
   closeIcon: {
     color: colors.orange,
     backgroundColor: null,
+  },
+  selectedView: {
+    marginTop: 30,
+    paddingVertical: 5,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    padding: 25,
   },
 });

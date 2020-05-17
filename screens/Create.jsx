@@ -17,7 +17,7 @@ const Create = ({ navigation, route }) => {
   const [searchKey, setSearchKey] = useState('');
 
   const toNextPage = () => {
-    navigation.navigate('Details');
+    navigation.navigate('Details', { selectedData });
   };
 
   const toggleSelected = (index, item) => {
@@ -120,11 +120,13 @@ const Create = ({ navigation, route }) => {
           })}
         </ScrollView>
 
-        <View style={create.next}>
-          <TouchableOpacity onPress={toNextPage}>
-            <AntDesign name="arrowright" size={30} color={colors.white} />
-          </TouchableOpacity>
-        </View>
+        {selectedData.length !== 0 && (
+          <View style={create.next}>
+            <TouchableOpacity onPress={toNextPage}>
+              <AntDesign name="arrowright" size={30} color={colors.white} />
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     </View>
   );
