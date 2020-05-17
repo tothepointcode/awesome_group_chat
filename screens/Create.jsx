@@ -9,7 +9,11 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const Create = ({ navigation, route }) => {
   const { data } = route.params;
   const [contactsData, setContactsData] = useState(data);
-  const [selectedData, setSelectedData] = useState([]);
+  const [selectedData, setSelectedData] = useState(
+    data.filter((item) => {
+      return item.selected;
+    }),
+  );
 
   const toNextPage = () => {
     navigation.navigate('Details');
@@ -57,7 +61,7 @@ const Create = ({ navigation, route }) => {
           <View style={create.selectedView}>
             <ScrollView horizontal={true}>
               {selectedData.map((item, index) => {
-                const { picture, name } = item;
+                const { picture, name, selected } = item;
 
                 return (
                   <View key={index} style={{ marginRight: 15 }}>
@@ -79,7 +83,7 @@ const Create = ({ navigation, route }) => {
       </ImageBackground>
       <View style={create.bottomSection}>
         <ScrollView>
-          {data.map((item, index) => {
+          {contactsData.map((item, index) => {
             const { picture, name, phone, selected } = item;
             return (
               <View key={index}>
