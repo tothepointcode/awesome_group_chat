@@ -16,12 +16,8 @@ export const colors = {
   lighttrans: 'rgba(24, 23, 22, 0.3)',
 };
 
-export const basic = StyleSheet.create({
-  body: {
-    padding: 25,
-    flex: 1,
-  },
-});
+const { orange, color2, color3 } = colors;
+export const colorSet = [orange, color2, color3, '#0c349c', '#1cb8a8'];
 
 export const welcome = StyleSheet.create({
   background: {
@@ -247,10 +243,11 @@ export const details = StyleSheet.create({
     alignItems: 'center',
   },
   subhead: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: '600',
     textAlign: 'center',
     color: colors.white,
+    paddingTop: 5
   },
   bottomHead: {
     fontSize: 25,
@@ -264,7 +261,7 @@ export const details = StyleSheet.create({
     fontSize: 19,
     marginLeft: 10,
     minWidth: 30,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   faceName: {
     color: colors.dark,
@@ -291,4 +288,75 @@ export const details = StyleSheet.create({
     justifyContent: 'flex-start',
     padding: 25,
   },
+});
+
+export const modal = StyleSheet.create({
+  body: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: colors.darktrans,
+    padding: 35,
+    paddingTop: 100,
+  },
+  avatarView: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  avatar: {
+    backgroundColor: colors.dark,
+    color: colors.white,
+    textAlign: 'center',
+    padding: 20,
+    borderRadius: 50,
+    fontSize: 30,
+    margin: 5,
+  },
+  head: {
+    fontSize: 20,
+    color: colors.white,
+    padding: 30,
+    paddingTop: 10,
+
+  },
+  profileSelect: {
+    backgroundColor: colors.dark,
+    borderRadius: 50,
+  },
+  avatarDim: {
+    opacity: 0.4
+  },
+  input: {
+    backgroundColor: colors.darktrans,
+    width: "100%",
+    padding: 20,
+    borderRadius: 30,
+    fontSize: 16,
+    marginVertical: 20,
+    color: colors.white,
+    textAlign: 'center',
+  },
+  buttonView: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between'
+  },
+  button: {
+    width: '48%',
+    backgroundColor: 'red',
+    borderRadius: 30,
+    backgroundColor: colors.gray,
+    padding: 20
+  },
+  buttonText: {
+    fontSize: 17,
+    color: colors.white,
+    textAlign: 'center'
+  },
+  msg: {
+    color: colors.white,
+    fontSize: 12,
+    padding: 15
+  }
 });

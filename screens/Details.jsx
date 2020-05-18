@@ -1,10 +1,9 @@
 import * as React from 'react';
 
 // UI
-import { View, Text, ImageBackground, ScrollView, Image, TextInput } from 'react-native';
-import { AntDesign, Ionicons, EvilIcons } from '@expo/vector-icons';
-import { create, details, colors } from './../style';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, ImageBackground, ScrollView, Image, Modal, TouchableOpacity, TextInput } from 'react-native';
+import { AntDesign, EvilIcons } from '@expo/vector-icons';
+import { welcome, create, details, colors, modal, colorSet } from './../style';
 
 const Details = ({ navigation, route }) => {
   const { selectedData } = route.params;
@@ -15,30 +14,17 @@ const Details = ({ navigation, route }) => {
   };
 
   const [selectedContacts, setSelectedContacts] = React.useState(selectedData);
+  const [modalVisible, setModalVisible] = React.useState(false);
+  const [groupName, setGroupName] = React.useState('Group Name');
+  const [tempGroupName, setTempGroupName] = React.useState('');
+  const [avatar, setAvatar] = React.useState(null);
+  const [tempAvatar, setTempAvatar] = React.useState(null);
+  const [msg, setMsg] = React.useState('');
 
-  const toggleSelected = (index, item) => {
-    // if (index == -1) {
-    //   index = data.indexOf(item);
-    // }
-
-    // const { selected } = data[index];
+  const toggleSelected = (index) => {
     let newSelected = [];
-
-    // if (selected) {
-    //   data[index].selected = false;
-
-    // const id = selectedData.indexOf(item);
-    // selectedData.splice(index, 1);
     newSelected = [...selectedContacts];
-
     newSelected.splice(index, 1);
-
-
-    // } else {
-    //   data[index].selected = true;
-    //   newSelected = [data[index], ...selectedData];
-    // }
-    // setContactsData([...data]);
     setSelectedContacts(newSelected);
   };
 
@@ -47,21 +33,39 @@ const Details = ({ navigation, route }) => {
     console.log(selectedData);
   }, [selectedData]);
 
+  const handleClose = () => {
+    setModalVisible(!modalVisible);
+  };
+
+  const handleSave = () => {
+    if (tempGroupName === '') {
+      setMsg('Empty group name!');
+      setTimeout(() => setMsg(''), 3000);
+    } else {
+      setGroupName(tempGroupName);
+      setAvatar(tempAvatar);
+      setModalVisible(!modalVisible);
+    }
+  };
+
   return (
     <View>
       <ImageBackground style={create.imagebg} source={require('./../assets/croods1.png')}>
         <View style={create.topSection}>
           <View style={details.head}>
-            <View style={details.profileRing}>
-              <AntDesign name="user" style={details.profile} />
+            <View style={[details.profileRing, avatar !== null && { borderColor: colorSet[avatar] }]}>
+              <AntDesign
+                name="user"
+                style={[details.profile, avatar !== null && { backgroundColor: colorSet[avatar] }]}
+              />
               <View style={details.edit}>
-                <TouchableOpacity style={details.editTouchable}>
+                <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={details.editTouchable}>
                   <EvilIcons style={details.editIcon} name="pencil" size={24} color="black" />
                 </TouchableOpacity>
               </View>
             </View>
             <View style={details.headDetails}>
-              <Text style={[create.contactHead, { color: colors.white }]}>Group Name</Text>
+              <Text style={[create.contactHead, { color: colors.white }]}>{groupName}</Text>
               <Text style={details.subhead}>Provide a group subject and an optional group icon</Text>
             </View>
           </View>
@@ -100,6 +104,47 @@ const Details = ({ navigation, route }) => {
           </TouchableOpacity>
         </View>
       </View>
+
+      <Modal animationType="slide" transparent={false} visible={modalVisible}>
+        <ImageBackground style={welcome.background} source={require('./../assets/croods1.png')}>
+          <View style={modal.body}>
+            <Text style={modal.head}>Pick an avatar</Text>
+
+            <View style={modal.avatarView}>
+              {colorSet.map((color, index) => {
+                return (
+                  <TouchableOpacity key={index} onPress={() => setTempAvatar(index)}>
+                    <View style={[index === tempAvatar && modal.profileSelect]}>
+                      <AntDesign
+                        name="user"
+                        style={[modal.avatar, index === tempAvatar && modal.avatarDim, { backgroundColor: color }]}
+                      />
+                    </View>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+            <TextInput
+              style={modal.input}
+              placeholder="Group Name"
+              placeholderTextColor={colors.gray}
+              selectionColor={colors.orange}
+              value={tempGroupName}
+              onChangeText={(text) => setTempGroupName(text)}
+            />
+
+            <View style={modal.buttonView}>
+              <TouchableOpacity onPress={handleClose} style={modal.button}>
+                <Text style={modal.buttonText}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={handleSave} style={[modal.button, { backgroundColor: colors.orange }]}>
+                <Text style={modal.buttonText}>Save </Text>
+              </TouchableOpacity>
+            </View>
+            <Text style={modal.msg}>{msg}</Text>
+          </View>
+        </ImageBackground>
+      </Modal>
     </View>
   );
 };
