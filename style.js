@@ -17,7 +17,7 @@ export const colors = {
 };
 
 const { orange, color2, color3 } = colors;
-export const colorSet = [orange, color2, color3, '#0c349c', '#1cb8a8'];
+export const colorSet = [orange,  color3, '#0c349c', color2, '#1cb8a8'];
 
 export const welcome = StyleSheet.create({
   background: {

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // UI
 import { View, Text, ImageBackground, ScrollView, Image, TextInput } from 'react-native';
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { create, colors } from './../style';
+import { create, colors, colorSet } from './../style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Create = ({ navigation, route }) => {
@@ -36,6 +36,7 @@ const Create = ({ navigation, route }) => {
       newSelected = [...selectedData];
     } else {
       data[index].selected = true;
+      data[index].colorId = index;
       newSelected = [data[index], ...selectedData];
     }
     setContactsData([...data]);
@@ -64,11 +65,12 @@ const Create = ({ navigation, route }) => {
           <View style={create.selectedView}>
             <ScrollView horizontal={true}>
               {selectedData.map((item, index) => {
-                const { picture, name, selected } = item;
+                const { picture, name, selected, colorId } = item;
+                const color = colorId % 5;
 
                 return (
                   <View key={index} style={{ marginRight: 15 }}>
-                    <View style={create.imgContainer}>
+                    <View style={[create.imgContainer, { borderColor: colorSet[color] }]}>
                       <Image style={create.face} source={{ uri: picture.medium }} />
                       <View style={create.faceClosebtn}>
                         <TouchableOpacity onPress={() => toggleSelected(-1, item)} style={{ padding: 3 }}>
@@ -89,11 +91,12 @@ const Create = ({ navigation, route }) => {
           {contactsData.map((item, index) => {
             const { picture, name, phone, selected } = item;
             const fullname = `${name.first} ${name.last}`;
+            const color = index % 5;
             if (fullname.includes(searchKey)) {
               return (
                 <View key={index}>
                   <View style={create.contactItem}>
-                    <View style={[create.imgContainer, { borderColor: 'red' }]}>
+                    <View style={[create.imgContainer, { borderColor: colorSet[color] }]}>
                       <Image style={create.face} source={{ uri: picture.medium }} />
                     </View>
                     <View style={create.contactDetails}>

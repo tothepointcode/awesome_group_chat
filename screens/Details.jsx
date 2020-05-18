@@ -77,11 +77,12 @@ const Details = ({ navigation, route }) => {
         <ScrollView>
           <View style={details.selectedView}>
             {selectedContacts.map((item, index) => {
-              const { picture, name } = item;
+              const { picture, name, colorId } = item;
+
 
               return (
                 <View style={{ margin: 8 }} key={index}>
-                  <View style={[create.imgContainer, details.imgContainer]}>
+                  <View style={[create.imgContainer, details.imgContainer, {borderColor: colorSet[colorId % 5]}]}>
                     <Image style={create.face} source={{ uri: picture.medium }} />
                     <View style={[create.faceClosebtn, details.closebtn]}>
                       <TouchableOpacity onPress={() => toggleSelected(index, item)} style={{ padding: 3 }}>
