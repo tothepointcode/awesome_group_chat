@@ -7,7 +7,6 @@ import { welcome, create, details, colors, modal, colorSet } from './../style';
 
 const Details = ({ navigation, route }) => {
   const { selectedData } = route.params;
-  console.log(route.params);
 
   const toNextPage = () => {
     navigation.navigate('Acknowledgement');
@@ -30,7 +29,6 @@ const Details = ({ navigation, route }) => {
 
   React.useEffect(() => {
     setSelectedContacts(selectedData);
-    console.log(selectedData);
   }, [selectedData]);
 
   const handleClose = () => {

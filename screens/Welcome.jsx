@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 // UI
-import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, StatusBar } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { welcome, colors } from './../style';
 
@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const Welcome = ({ navigation }) => {
   const toCreatePage = () => {
-    navigation.navigate('Create', {data});
+    navigation.navigate('Create', { data });
   };
 
   const [data, setData] = useState([]);
@@ -26,6 +26,7 @@ const Welcome = ({ navigation }) => {
 
   return (
     <View>
+      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
       <ImageBackground style={welcome.background} source={require('./../assets/croods.png')}>
         <View style={welcome.body}>
           <Text style={welcome.welcomeText}>Welcome</Text>
